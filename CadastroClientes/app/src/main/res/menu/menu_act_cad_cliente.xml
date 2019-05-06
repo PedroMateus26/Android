@@ -4,8 +4,10 @@
 
     <item
         android:id="@+id/action_ok"
-        android:title="@string/title_menu_ok" />
+        android:title="@string/title_menu_ok"
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_cancelar"
-        android:title="@string/title_menu_cancelar" />
+        android:title="@string/title_menu_cancelar"
+        app:showAsAction="ifRoom" />
 </menu>
