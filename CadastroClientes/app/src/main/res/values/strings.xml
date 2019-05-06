@@ -8,4 +8,7 @@
     <string name="lbl_telefone">Telefone</string>
     <string name="title_menu_ok">OK</string>
     <string name="title_menu_cancelar">Cancelar</string>
+    <string name="titles_aviso">Aviso</string>
+    <string name="message_campos_invalidos_brancos">Há campos inválidos ou e branco</string>
+    <string name="lblOK">OK</string>
 </resources>

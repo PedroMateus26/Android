@@ -52,9 +52,9 @@ public class ActCadCliente extends AppCompatActivity {
 
         if(res) {
             AlertDialog.Builder dlg = new AlertDialog.Builder(this);
-            dlg.setTitle("Aviso");
-            dlg.setMessage("Há campos inválidos ou e branco");
-            dlg.setNeutralButton("OK",null);
+            dlg.setTitle(R.string.titles_aviso);
+            dlg.setMessage(R.string.message_campos_invalidos_brancos);
+            dlg.setNeutralButton(R.string.lblOK,null);
             dlg.show();
         }
 
