@@ -6,24 +6,26 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.EditText;
 
 public class ActCadCliente extends AppCompatActivity {
-    FloatingActionButton fab;
+    private EditText edtNome;
+    private EditText edtEndereco;
+    private EditText edtEmail;
+    private EditText edtTelefone;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_act_cad_cliente);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        edtNome = (EditText) findViewById(R.id.edtNome);
+        edtEndereco = (EditText) findViewById(R.id.edtEndereco);
+        edtEmail = (EditText) findViewById(R.id.edtEmail);
+        edtTelefone = (EditText) findViewById(R.id.edtTelefone);
 
-        fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
+
     }
 
 }
