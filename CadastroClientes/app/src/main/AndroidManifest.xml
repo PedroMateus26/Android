@@ -17,6 +17,10 @@
             android:label="@string/title_activity_act_cad_cliente"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".ActCadEndereco"
+            android:label="@string/title_activity_act_cad_cliente"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".ActMain"
             android:label="@string/title_activity_act_main"
             android:theme="@style/AppTheme.NoActionBar">

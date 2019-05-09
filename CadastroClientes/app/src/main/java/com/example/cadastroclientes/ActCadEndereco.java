@@ -1,6 +1,5 @@
 package com.example.cadastroclientes;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
@@ -19,7 +18,7 @@ import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 
-public class ActCadCliente extends AppCompatActivity {
+public class ActCadEndereco extends AppCompatActivity {
     private EditText edtNome;
     private EditText edtEmail;
     private EditText edtTelefone;
@@ -30,7 +29,7 @@ public class ActCadCliente extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_act_cad_cliente);
+        setContentView(R.layout.activity_act_cad_endereco);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -59,6 +58,7 @@ public class ActCadCliente extends AppCompatActivity {
             AlertDialog.Builder dlg = new AlertDialog.Builder(this);
             dlg.setTitle(R.string.titles_aviso);
             dlg.setMessage(R.string.message_campos_invalidos_brancos);
+            dlg.setNeutralButton(R.string.lblOK,null);
             dlg.show();
             return false;
         }
@@ -86,8 +86,12 @@ public class ActCadCliente extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         switch (id) {
+            case R.id.action_ok:
+                validaCampos();
+                Toast.makeText(this, "Botão OK selecionado", Toast.LENGTH_SHORT).show();
+                break;
             case R.id.action_cancelar:
-                Toast.makeText(this, "Novo Orçamento Cancelado", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Botão Cancelar selecionado", Toast.LENGTH_SHORT).show();
                 finish();
                 break;
         }
@@ -101,7 +105,7 @@ public class ActCadCliente extends AppCompatActivity {
         String url = HOST + "create.php";
         //Create
         //POST e GET
-        Ion.with(ActCadCliente.this)
+        Ion.with(ActCadEndereco.this)
                 .load(url)
                 .setBodyParameter("name", nome)
                 .setBodyParameter("email", email)
@@ -117,16 +121,16 @@ public class ActCadCliente extends AppCompatActivity {
                             int idCadastro =Integer.parseInt((result.get("ID").getAsString()));
 
                             if(result.get("CREATE").getAsString().equals("OK")){
-                                Toast.makeText(ActCadCliente.this, "Salvo com Sucesso", Toast.LENGTH_LONG).show();
+                                Toast.makeText(ActCadEndereco.this, "Salvo com Sucesso", Toast.LENGTH_LONG).show();
                             }else{
-                                Toast.makeText(ActCadCliente.this, "Ocorreu um erro ", Toast.LENGTH_LONG).show();
+                                Toast.makeText(ActCadEndereco.this, "Ocorreu um erro ", Toast.LENGTH_LONG).show();
                             }
                         }else{
-                            Toast.makeText(ActCadCliente.this, "Ocorreu um erro ao Salvar", Toast.LENGTH_LONG).show();
+                            Toast.makeText(ActCadEndereco.this, "Ocorreu um erro ao Salvar", Toast.LENGTH_LONG).show();
                         }
                     }
                 });
-        Intent it = new Intent(ActCadCliente.this, ActCadEndereco.class);
-        startActivity(it);
+        //Intent it = new Intent(ActCadCliente.this, ActCadEndereco.class);
+        //startActivity(it);
     }
 }

@@ -4,17 +4,18 @@
     <string name="title_activity_act_cad_cliente">Client</string>
     <string name="lbl_nome">Name</string>
     <string name="lbl_endereco">Address</string>
-    <string name="lbl_email">Email</string>
+    <string name="lbl_email">e-mail</string>
     <string name="lbl_telefone">Phone</string>
     <string name="title_menu_ok">OK</string>
     <string name="title_menu_cancelar">Cancel</string>
-    <string name="titles_aviso">Aviso</string>
-    <string name="message_campos_invalidos_brancos">Há campos inválidos ou e branco</string>
+    <string name="titles_aviso">Warning</string>
+    <string name="message_campos_invalidos_brancos">There are some invalid info!</string>
     <string name="lblOK">OK</string>
+    <string name="lblCidade">City</string>
+    <string name="lblEstado">State</string>
     <string name="lbl_CPF">CPF</string>
-    <string name="title_activity_act_cad_endereco">Address</string>
+    <string name="n_orc_string">"Novo Orçamento Cancelado"</string>
     <string name="lbl_CEP">CEP</string>
-    <string name="lbl_Logradouro">Logradouro</string>
-    <string name="lblCidade">Cidade</string>
-    <string name="lblEstado">Estado</string>
+    <string name="lbl_Logradouro">Street</string>
+    <string name="title_activity_act_cad_endereco">Address</string>
 </resources>
