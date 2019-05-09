@@ -1,8 +1,8 @@
 package com.example.cadastroclientes;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -15,28 +15,37 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.regex.Pattern;
+import com.google.gson.JsonObject;
+import com.koushikdutta.async.future.FutureCallback;
+import com.koushikdutta.ion.Ion;
 
 public class ActCadCliente extends AppCompatActivity {
     private EditText edtNome;
     private EditText edtEndereco;
     private EditText edtEmail;
     private EditText edtTelefone;
+    private EditText edtCPF;
+    FloatingActionButton fab2;
+    private String HOST="http://192.168.0.103/jbeapp/";
+    private String nome, endereco, email,telefone;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_act_cad_cliente);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        fab2 = findViewById(R.id.fab);
+
         edtNome = (EditText) findViewById(R.id.edtNome);
         edtEndereco = (EditText) findViewById(R.id.edtEndereco);
         edtEmail = (EditText) findViewById(R.id.edtEmail);
         edtTelefone = (EditText) findViewById(R.id.edtTelefone);
 
     }
-    public void validaCampos(){
+    public boolean validaCampos(){
         boolean res =false;
-        String nome, endereco, email,telefone;
+
         nome = this.edtNome.getText().toString();
         endereco = this.edtEndereco.getText().toString();
         email = this.edtEmail.getText().toString();
@@ -56,8 +65,9 @@ public class ActCadCliente extends AppCompatActivity {
             dlg.setMessage(R.string.message_campos_invalidos_brancos);
             dlg.setNeutralButton(R.string.lblOK,null);
             dlg.show();
+            return false;
         }
-
+        return true;
     }
 
     public boolean isEmailValido(String email){
@@ -92,5 +102,39 @@ public class ActCadCliente extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void cadastrar(View view){
+//        if(!validaCampos())
+//            return;
+        String url = HOST + "create.php";
+        //Create
+        //POST e GET
+        Ion.with(ActCadCliente.this)
+                .load(url)
+                .setBodyParameter("name", "dsd")
+                .setBodyParameter("email", "dsd")
+                .setBodyParameter("phone", "dsd")
+                .asJsonObject()
+                .setCallback(new FutureCallback<JsonObject>() {
+                    @Override
+                    public void onCompleted(Exception e, JsonObject result) {
+                        //System.out.println(e.getMessage().toString());
+                        // do stuff with the result or error
+                        if(result!=null){
+                            int idCadastro =Integer.parseInt((result.get("ID").getAsString()));
+
+                            if(result.get("CREATE").getAsString().equals("OK")){
+                                Toast.makeText(ActCadCliente.this, "Salvo com Sucesso", Toast.LENGTH_LONG).show();
+                            }else{
+                                Toast.makeText(ActCadCliente.this, "Ocorreu um erro ", Toast.LENGTH_LONG).show();
+                            }
+                        }else{
+                            Toast.makeText(ActCadCliente.this, "Ocorreu um erro ao Salvar", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+        //Intent it = new Intent(ActCadCliente.this, ActCadEndereco.class);
+        //startActivity(it);
     }
 }

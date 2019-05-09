@@ -28,7 +28,6 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
         app:layout_constraintEnd_toEndOf="@+id/txtNome"
         app:layout_constraintStart_toStartOf="@+id/txtNome"
         app:layout_constraintTop_toBottomOf="@+id/txtNome" />
@@ -51,7 +50,6 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
         app:layout_constraintEnd_toEndOf="@+id/txtEndereco"
         app:layout_constraintStart_toStartOf="@+id/txtEndereco"
         app:layout_constraintTop_toBottomOf="@+id/txtEndereco" />
@@ -99,4 +97,25 @@
         app:layout_constraintEnd_toEndOf="@+id/txtTelefone"
         app:layout_constraintStart_toStartOf="@+id/txtTelefone"
         app:layout_constraintTop_toBottomOf="@+id/txtTelefone" />
+
+    <TextView
+        android:id="@+id/txtCPF"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/lbl_CPF"
+        app:layout_constraintEnd_toEndOf="@+id/edtTelefone"
+        app:layout_constraintStart_toStartOf="@+id/edtTelefone"
+        app:layout_constraintTop_toBottomOf="@+id/edtTelefone" />
+
+    <EditText
+        android:id="@+id/edtCPF"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="@+id/txtCPF"
+        app:layout_constraintStart_toStartOf="@+id/txtCPF"
+        app:layout_constraintTop_toBottomOf="@+id/txtCPF" />
 </android.support.constraint.ConstraintLayout>
